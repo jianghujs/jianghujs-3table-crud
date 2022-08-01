@@ -38,7 +38,7 @@
           <v-btn color="primary" text @click="classSelectDialog_shown = false">取消</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>    
+    </v-dialog>
   </span>
 </script>
 
@@ -49,16 +49,19 @@
     mixins: [ window.jianghuUiActionMixins ],
     data: () => (window.vueData),
     computed: {
+      isMobile() {
+        return window.innerWidth < 600;
+      },
       classSelectDialog_dataList_filter() {
         const classSelectDialog_filterText = (this.classSelectDialog_filterText || '').toLowerCase();
         let list = this.classSelectDialog_dataList.slice();
         list = list.filter((item) =>
-            item.text && 
+            item.text &&
             ( item.text.toLowerCase().includes(classSelectDialog_filterText) ||
               item.text.includes(classSelectDialog_filterText)
             )
         )
-        return list;   
+        return list;
       },
     },
     methods: {

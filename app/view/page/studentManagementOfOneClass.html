@@ -26,7 +26,7 @@
       </v-col>
     </v-row>
     <v-data-table fixed-header :headers="headers" :items="tableData" :search="searchInput"
-                  :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }" :items-per-page="20" :dense="isMobile"
+                  :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }" :items-per-page="20"
                   :loading="isTableLoading" checkbox-color="success" mobile-breakpoint="0"
                   class="elevation-0 mt-0 mb-xs-4 flex-fill d-flex flex-column">
 
@@ -59,7 +59,7 @@
     </v-row>
     <v-row class="pa-2 py-0">
       <v-data-table show-select checkbox-color="success" :headers="headers"
-                    :loading="isDrawerTableLoading" :items="drawerTableData" item-key="studentId" :dense="isMobile"
+                    :loading="isDrawerTableLoading" :items="drawerTableData" item-key="studentId"
                     :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }" :items-per-page="20"
                     mobile-breakpoint="0" @item-selected="drawerItemSelected"
                     @toggle-select-all="drawerToggleSelectAll"
