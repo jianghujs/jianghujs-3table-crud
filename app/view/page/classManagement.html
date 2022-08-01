@@ -77,23 +77,23 @@
     </v-row>
     <v-row cols="12" sm="12" md="4" xl="3" :class="{'px-10': !isMobile, 'px-4': isMobile, 'pb-7': isMobile}">
 
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">班级ID</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="班级ID" v-model="addItem['classId']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">门派ID</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="门派ID" v-model="addItem['menPaiId']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">门派名</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="门派名" v-model="addItem['menPaiName']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">备注</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="备注" v-model="addItem['remarks']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">班级状态</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="班级状态" v-model="addItem['classStatus']"></v-text-field>
       </v-col>
@@ -117,23 +117,23 @@
     </v-row>
     <v-row cols="12" sm="12" md="4" xl="3" :class="{'px-10': !isMobile, 'px-4': isMobile, 'pb-7': isMobile}">
 
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">班级ID</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="班级ID" v-model="editItem['classId']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">门派ID</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="门派ID" v-model="editItem['menPaiId']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">门派名</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="门派名" v-model="editItem['menPaiName']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">备注</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="备注" v-model="editItem['remarks']"></v-text-field>
       </v-col>
-      <v-col cols="12" sm="12" md="4" xl="3" class="pa-xs-0 pb-xs-4 pb-3">
+      <v-col cols="12" sm="12" md="4" :class="{'pa-0': isMobile, 'px-4': isMobile, 'pt-6': isMobile}">
         <span style="color: #3F4254;" :style="{'line-height': isMobile ? '20px' : '42px', 'font-weight': isMobile ? 400 : 500}">班级状态</span>
         <v-text-field class="cus-v-input mr-2" dense filled single-line label="班级状态" v-model="editItem['classStatus']"></v-text-field>
       </v-col>
