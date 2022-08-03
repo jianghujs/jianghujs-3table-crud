@@ -142,7 +142,7 @@ CREATE TABLE `_page` (
 BEGIN;
 INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (2, 'help', '帮助', 'dynamicInMenu', '11', 'insert', NULL, NULL, NULL);
 INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (3, 'login', '登陆', '', '', 'insert', NULL, NULL, NULL);
-INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (6, 'manual', '操作手册', 'showInMenu', '0', 'insert', NULL, NULL, NULL);
+INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (6, 'manual', '操作手册', 'dynamicInMenu', '0', 'insert', NULL, NULL, NULL);
 INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (36, 'studentManagement', '学生管理-学生的增删改查页面', 'showInMenu', '5', 'insert', NULL, NULL, NULL);
 INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (37, 'classManagement', '班级管理-班级的增删改查页面', 'showInMenu', '5', 'insert', NULL, NULL, NULL);
 INSERT INTO `_page` (`id`, `pageId`, `pageName`, `pageType`, `sort`, `operation`, `operationByUserId`, `operationByUser`, `operationAt`) VALUES (38, 'studentManagementOfOneClass', '学生管理-班级的学生管理', 'dynamicInMenu', '5', 'jhInsert', NULL, NULL, NULL);
