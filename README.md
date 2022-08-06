@@ -10,7 +10,7 @@
    port: 3306,
    user: 'root',
    password: '123456',
-   database: 'jianghujs_demo_threetable'
+   database: 'jianghujs-3table-crud'
    ```
 4. 启动 npm run dev
    
@@ -18,7 +18,7 @@
 
 ```sql
 # 数据库初始化
-create database `jianghujs_demo_threetable` default character set utf8mb4 collate utf8mb4_bin;
+create database `jianghujs-3table-crud` default character set utf8mb4 collate utf8mb4_bin;
 use jianghujs_demo_threetable;
 # 运行 sql/jianghujs_demo_threetable.sql 文件
 ```
