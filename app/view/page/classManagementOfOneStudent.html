@@ -308,14 +308,14 @@ new Vue({
     },
 
     async doUpdateItem() {
-      const {id, ...data} = this.editItem;
+      const {id, classId, studentId, remark } = this.editItem;
       await window.vtoast.loading("修改数据");
       await window.jianghuAxios({
         data: {
           appData: {
             pageId: 'classManagementOfOneStudent',
             actionId: 'updateItem',
-            actionData: data,
+            actionData: { classId, studentId, remark },
             where: {id: id}
           }
         }
