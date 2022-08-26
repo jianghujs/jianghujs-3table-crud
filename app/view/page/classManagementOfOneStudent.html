@@ -60,7 +60,7 @@
       </v-btn>
     </v-row>
     <v-row class="pa-2 py-0">
-      <v-data-table show-select checkbox-color="success" :headers="headers"
+      <v-data-table show-select checkbox-color="success" :headers="drawerHeaders"
                     :loading="isDrawerTableLoading" :items="drawerTableData" item-key="classId"
                     :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }" :items-per-page="20"
                     mobile-breakpoint="0" @item-selected="drawerItemSelected"
@@ -124,8 +124,8 @@ new Vue({
   el: '#app',
   template: '#app-template',
   vuetify: new Vuetify(),
-  mixins: [window.jianghuUiActionMixins],
   data: () => ({
+    isMobile: window.innerWidth < 600,
     studentId: null,
     title: null,
     searchInput: null,
@@ -149,7 +149,9 @@ new Vue({
       {text: '班级状态', value: 'classStatus', width: 120},
       {text: "操作者", value: "operationByUser", width: 120},
     ],
+    drawerTableData: [],
     drawerTableDataFromBackend: [],
+    tableData: [],
     tableDataFromBackend: [],
     drawerItemSelectedClass: [],
     isFormValid: true,
@@ -159,22 +161,6 @@ new Vue({
     constantCollection: {},
     editItem: {}
   }),
-  computed: {
-    isMobile() {
-      return window.innerWidth < 600;
-    },
-    // 表格内容，即当前学生下的班级
-    tableData() {
-      return this.tableDataFromBackend;
-    },
-    // 弹出抽屉的内容，即：所有班级 - 当前学生下的班级
-    drawerTableData() {
-      if (_.isEmpty(this.drawerTableDataFromBackend)) {
-        return [];
-      }
-      return _.differenceBy(this.drawerTableDataFromBackend, this.tableData, 'classId');
-    }
-  },
   watch: {},
   async created() {
     const urlParams = new URLSearchParams(location.search);
@@ -189,12 +175,55 @@ new Vue({
       }, 1000);
       return;
     }
-    this.doUiAction('refreshTableData');
+    await this.doUiAction('refreshTableData');
     await this.doUiAction('getDrawerTableData');
   },
   mounted() {
   },
   methods: {
+    async doUiAction(actionId, actionData) {
+      switch (actionId) {
+        case 'refreshTableData':
+          await this.refreshTableData();
+          break;
+        case 'getDrawerTableData':
+          await this.getDrawerTableData();
+          await this.buildDrawerTableData();
+          break;
+        case 'allotItem':
+          await this.confirmAllotItemDialog();
+          await this.doAllotItem();
+          await this.refreshTableData();
+          await this.buildDrawerTableData();
+          break;
+        case 'buildRelation':
+          await this.confirmAllotItemDialog();
+          await this.doBuildRelation(actionData);
+          await this.refreshTableData();
+          await this.buildDrawerTableData();
+          break;
+        case 'startUpdateItem':
+          await this.prepareItemData(actionData);
+          await this.openUpdateDialog();
+          break;
+        case 'updateItem':
+          await this.confirmUpdateItemDialog();
+          await this.doUpdateItem();
+          await this.refreshTableData();
+          await this.buildDrawerTableData();
+          await this.closeDrawerShow();
+          break;
+        case 'deleteRelation':
+          await this.confirmDeleteItemDialog();
+          await this.doDeleteRelation(actionData);
+          await this.refreshTableData();
+          await this.buildDrawerTableData();
+          break;
+        default:
+          console.error("[doUiAction] actionId not find", {actionId});
+          break;
+      }
+    },
     // 获取所有学生的数据
     /**
      * uiActionId:  refreshTableData
@@ -213,6 +242,7 @@ new Vue({
           }
         }
       });
+      this.tableData = result.data.appData.rows;
       this.tableDataFromBackend = result.data.appData.rows;
       this.isTableLoading = false;
     },
@@ -238,16 +268,27 @@ new Vue({
       this.isDrawerTableLoading = false;
     },
 
+
+    buildDrawerTableData() {
+      if (_.isEmpty(this.drawerTableDataFromBackend)) {
+        this.drawerTableData = [];
+      } else {
+        this.drawerTableData = _.differenceBy(this.drawerTableDataFromBackend, this.tableData, 'classId');
+      }
+    },
+
     /**
      * uiActionId:  allotItem
      * description: ✅获取表格数据
      * main:   [{"function":"confirmAllotItemDialog"},{"function":"doAllotItem"}]
      */
+
     async confirmAllotItemDialog() {
       this.isAllotEditDrawerShow = true;
-      return window.confirmDialog({title: '确定将班级分配给此学生吗', content: '确定分配吗？'})
+      if (await window.confirmDialog({title: "确定将班级分配给此学生吗", content: "确定分配吗？"}) === false) {
+        throw new Error("[confirmAllotItemDialog] 否");
+      }
     },
-
     async doAllotItem() {
       this.isAllotEditDrawerShow = false;
       for (let i = 0; i < this.drawerItemSelectedClass.length; i++) {
@@ -304,7 +345,9 @@ new Vue({
      * after:  [{"function":"closeDrawerShow"}]
      */
     async confirmUpdateItemDialog() {
-      return window.confirmDialog({title: '修改', content: '确定修改吗？'});
+      if (await window.confirmDialog({title: "修改", content: "确定修改吗？"}) === false) {
+        throw new Error("[confirmUpdateItemDialog] 否");
+      }
     },
 
     async doUpdateItem() {
@@ -334,7 +377,9 @@ new Vue({
      * main:   [{"function":"doDeleteRelation"},{"function":"refreshTableData"}]
      */
     async confirmDeleteItemDialog() {
-      return window.confirmDialog({title: '确认将班级从学生删除？'})
+      if (await window.confirmDialog({title: "删除", content: "确定删除吗？"}) === false) {
+        throw new Error("[confirmDeleteItemDialog] 否");
+      }
     },
     async doDeleteRelation({item}) {
       window.vtoast.loading("删除中");
