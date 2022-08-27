@@ -181,7 +181,7 @@ new Vue({
   mounted() {
   },
   methods: {
-    async doUiAction(actionId, actionData) {
+    async doUiAction(actionId, uiActionData) {
       switch (actionId) {
         case 'refreshTableData':
           await this.refreshTableData();
@@ -198,12 +198,12 @@ new Vue({
           break;
         case 'buildRelation':
           await this.confirmAllotItemDialog();
-          await this.doBuildRelation(actionData);
+          await this.doBuildRelation(uiActionData);
           await this.refreshTableData();
           await this.buildDrawerTableData();
           break;
         case 'startUpdateItem':
-          await this.prepareItemData(actionData);
+          await this.prepareItemData(uiActionData);
           await this.openUpdateDialog();
           break;
         case 'updateItem':
@@ -215,7 +215,7 @@ new Vue({
           break;
         case 'deleteRelation':
           await this.confirmDeleteItemDialog();
-          await this.doDeleteRelation(actionData);
+          await this.doDeleteRelation(uiActionData);
           await this.refreshTableData();
           await this.buildDrawerTableData();
           break;
