@@ -13,7 +13,7 @@ CREATE TABLE `_cache` (
   `operationByUser` varchar(255) DEFAULT NULL COMMENT '操作者用户名',
   `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 17 COMMENT = '缓存表';
+) ENGINE = InnoDB COMMENT = '缓存表';
 
 
 
@@ -34,43 +34,9 @@ CREATE TABLE `_constant` (
   `operationByUser` varchar(255) DEFAULT NULL COMMENT '操作者用户名',
   `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 59 COMMENT = '常量表; 软删除未启用;';
+) ENGINE = InnoDB COMMENT = '常量表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _constant
-# ------------------------------------------------------------
-
-
-
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: _file
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `_file`;
-CREATE TABLE `_file` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fileId` varchar(255) DEFAULT NULL COMMENT 'fileId',
-  `fileDirectory` varchar(255) DEFAULT NULL COMMENT '文件保存路径;',
-  `filename` varchar(255) DEFAULT NULL COMMENT '文件名;',
-  `filenameStorage` varchar(255) DEFAULT NULL COMMENT '文件保存名',
-  `downloadPath` varchar(255) DEFAULT NULL COMMENT '文件下载路径',
-  `fileType` varchar(255) DEFAULT NULL COMMENT '文件类型;(预留字段)',
-  `fileDesc` varchar(255) DEFAULT NULL COMMENT '文件描述',
-  `binarySize` varchar(255) DEFAULT NULL COMMENT '文件二进制大小',
-  `operation` varchar(255) DEFAULT 'insert' COMMENT '操作; insert, update, jhInsert, jhUpdate, jhDelete jhRestore',
-  `operationByUserId` varchar(255) DEFAULT NULL COMMENT '操作者userId',
-  `operationByUser` varchar(255) DEFAULT NULL COMMENT '操作者用户名',
-  `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
-  PRIMARY KEY (`id`),
-  KEY `fileId_index` (`fileId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 COMMENT = '文件表; 软删除未启用;';
-
-
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _file
-# ------------------------------------------------------------
 
 
 
@@ -96,14 +62,7 @@ CREATE TABLE `_group` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 COMMENT = '群组表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _group
-# ------------------------------------------------------------
 
-INSERT INTO `_group` (`id`,`groupId`,`groupName`,`groupDesc`,`groupAvatar`,`groupExtend`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (1,'adminGroup','管理组','管理组',NULL,'{}','insert',NULL,NULL,NULL);
-INSERT INTO `_group` (`id`,`groupId`,`groupName`,`groupDesc`,`groupAvatar`,`groupExtend`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (6,'wudang','武当','武当',NULL,'{}','insert',NULL,NULL,NULL);
-INSERT INTO `_group` (`id`,`groupId`,`groupName`,`groupDesc`,`groupAvatar`,`groupExtend`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (7,'gaibang','丐帮','丐帮',NULL,'{}','insert',NULL,NULL,NULL);
-INSERT INTO `_group` (`id`,`groupId`,`groupName`,`groupDesc`,`groupAvatar`,`groupExtend`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (8,'huashan','华山派','华山派',NULL,'{}','insert',NULL,NULL,NULL);
 
 
 
@@ -127,17 +86,13 @@ CREATE TABLE `_page` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 40 COMMENT = '页面表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _page
-# ------------------------------------------------------------
 
-INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (2,'help','帮助',NULL,'dynamicInMenu','11','insert',NULL,NULL,NULL);
-INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'login','登陆',NULL,'','','insert',NULL,NULL,NULL);
-INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (6,'manual','操作手册',NULL,'dynamicInMenu','0','insert',NULL,NULL,NULL);
+INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (2,'help','帮助','helpV3','dynamicInMenu','11','insert',NULL,NULL,NULL);
+INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'login','登陆','loginV3','','','insert',NULL,NULL,NULL);
 INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (36,'studentManagement','学生管理-学生的增删改查页面',NULL,'showInMenu','5','insert',NULL,NULL,NULL);
 INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (37,'classManagement','班级管理-班级的增删改查页面',NULL,'showInMenu','5','insert',NULL,NULL,NULL);
-INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (38,'studentManagementOfOneClass','学生管理-班级的学生管理',NULL,'dynamicInMenu','5','jhInsert',NULL,NULL,NULL);
-INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (39,'classManagementOfOneStudent','班级管理-学生的班级管理',NULL,'dynamicInMenu','5','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (38,'studentManagementOfOneClass','班级的学生管理',NULL,'dynamicInMenu','5','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_page` (`id`,`pageId`,`pageName`,`pageFile`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (39,'classManagementOfOneStudent','学生的班级管理',NULL,'dynamicInMenu','5','jhInsert',NULL,NULL,NULL);
 
 
 
@@ -159,7 +114,7 @@ CREATE TABLE `_record_history` (
   PRIMARY KEY (`id`),
   KEY `index_record_id` (`recordId`),
   KEY `index_table_action` (`table`, `operation`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2142 COMMENT = '数据历史表';
+) ENGINE = InnoDB AUTO_INCREMENT = 2257 COMMENT = '数据历史表';
 
 
 
@@ -189,62 +144,29 @@ CREATE TABLE `_resource` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 383 COMMENT = '请求资源表; 软删除未启用; resourceId=`${appId}.${pageId}.${actionId}`';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _resource
-# ------------------------------------------------------------
 
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (231,NULL,NULL,'login','passwordLogin','✅登陆','service','{}','{\"service\": \"user\", \"serviceFunction\": \"passwordLogin\"}',NULL,NULL,'update',NULL,NULL,'2022-04-27T15:32:57+08:00');
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (251,NULL,NULL,'allPage','logout','✅登出','service','{}','{\"service\": \"user\", \"serviceFunction\": \"logout\"}',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (253,NULL,NULL,'allPage','userInfo','✅获取用户信息','service','{}','{\"service\": \"user\", \"serviceFunction\": \"userInfo\"}',NULL,NULL,'update',NULL,NULL,'2022-04-27T15:37:21+08:00');
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (258,NULL,NULL,'allPage','getConstantList','✅查询常量','sql','{}','{\"table\": \"_constant\", \"operation\": \"select\"}',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (365,NULL,NULL,'studentManagement','selectItemList','✅studentManagement查询-查询列表','sql','{}','{ \"table\": \"student\", \"operation\": \"select\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (366,NULL,NULL,'studentManagement','insertItem','✅studentManagement查询-添加成员','sql','{}','{ \"table\": \"student\", \"operation\": \"insert\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (367,NULL,NULL,'studentManagement','updateItem','✅studentManagement查询-更新成员','sql','{}','{ \"table\": \"student\", \"operation\": \"jhUpdate\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (368,NULL,NULL,'studentManagement','deleteItem','✅studentManagement查询-删除信息','sql','{}','{ \"table\": \"student\", \"operation\": \"jhDelete\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (369,NULL,NULL,'classManagement','selectItemList','✅classManagement查询-查询列表','sql','{}','{ \"table\": \"class\", \"operation\": \"select\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (370,NULL,NULL,'classManagement','insertItem','✅classManagement查询-添加成员','sql','{}','{ \"table\": \"class\", \"operation\": \"insert\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (371,NULL,NULL,'classManagement','updateItem','✅classManagement查询-更新成员','sql','{}','{ \"table\": \"class\", \"operation\": \"jhUpdate\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (372,NULL,NULL,'classManagement','deleteItem','✅classManagement查询-删除信息','sql','{}','{ \"table\": \"class\", \"operation\": \"jhDelete\" }',NULL,NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (373,NULL,NULL,'studentManagementOfOneClass','selectCurrentList','✅班级的学生管理-查询当前学生下的班级列表','sql','{}','{ \"table\": \"view01_student_class\", \"operation\": \"select\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (374,NULL,NULL,'studentManagementOfOneClass','insertItem','✅班级的学生管理-建立关系','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhInsert\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (375,NULL,NULL,'studentManagementOfOneClass','updateItem','✅班级的学生管理-更新数据','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhUpdate\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (376,NULL,NULL,'studentManagementOfOneClass','deleteItem','✅班级的学生管理-删除信息','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhDelete\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (377,NULL,NULL,'studentManagementOfOneClass','selectAllList','✅班级查询-查询列表','sql','{}','{ \"table\": \"student\", \"operation\": \"select\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (378,NULL,NULL,'classManagementOfOneStudent','selectCurrentList','✅学生的班级管理-查询当前班级下的学生列表','sql','{}','{ \"table\": \"view01_student_class\", \"operation\": \"select\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (379,NULL,NULL,'classManagementOfOneStudent','insertItem','✅学生的班级管理-建立关系','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhInsert\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (380,NULL,NULL,'classManagementOfOneStudent','updateItem','✅学生的班级管理-更新数据','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhUpdate\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (381,NULL,NULL,'classManagementOfOneStudent','deleteItem','✅学生的班级管理-删除信息','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhDelete\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (382,NULL,NULL,'classManagementOfOneStudent','selectAllList','✅学生查询-查询列表','sql','{}','{ \"table\": \"class\", \"operation\": \"select\" }',NULL,NULL,'jhInsert',NULL,NULL,NULL);
-
-
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: _resource_request_log
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `_resource_request_log`;
-CREATE TABLE `_resource_request_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `resourceId` varchar(255) DEFAULT NULL COMMENT 'resource id;',
-  `packageId` varchar(255) DEFAULT NULL COMMENT 'resource package id',
-  `userIp` varchar(255) DEFAULT NULL COMMENT '用户ip;',
-  `userAgent` varchar(255) DEFAULT NULL COMMENT '设备信息',
-  `userId` varchar(255) DEFAULT NULL COMMENT '用户ID',
-  `deviceId` varchar(255) DEFAULT NULL COMMENT '设备id',
-  `userIpRegion` varchar(255) DEFAULT NULL COMMENT '用户Ip区域',
-  `executeSql` varchar(255) DEFAULT NULL COMMENT '执行的sql',
-  `requestBody` text COMMENT '请求body',
-  `responseBody` text COMMENT '响应body',
-  `responseStatus` varchar(255) DEFAULT NULL COMMENT '执行的结果;  success, fail',
-  `operation` varchar(255) DEFAULT 'insert' COMMENT '操作; insert, update, jhInsert, jhUpdate, jhDelete jhRestore',
-  `operationByUserId` varchar(255) DEFAULT NULL COMMENT '操作者userId',
-  `operationByUser` varchar(255) DEFAULT NULL COMMENT '操作者用户名',
-  `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
-  PRIMARY KEY (`id`),
-  KEY `resourceId_index` (`resourceId`),
-  KEY `packageId_index` (`packageId`)
-) ENGINE = InnoDB AUTO_INCREMENT = 3732 COMMENT = '文件表; 软删除未启用;';
-
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (231,NULL,NULL,'login','passwordLogin','✅登陆','service','{}','{\"service\": \"user\", \"serviceFunction\": \"passwordLogin\"}','','','update',NULL,NULL,'2022-04-27T15:32:57+08:00');
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (251,NULL,NULL,'allPage','logout','✅登出','service','{}','{\"service\": \"user\", \"serviceFunction\": \"logout\"}','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (253,NULL,NULL,'allPage','userInfo','✅获取用户信息','service','{}','{\"service\": \"user\", \"serviceFunction\": \"userInfo\"}','','','update',NULL,NULL,'2022-04-27T15:37:21+08:00');
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (258,NULL,NULL,'allPage','getConstantList','✅查询常量','sql','{}','{\"table\": \"_constant\", \"operation\": \"select\"}','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (365,NULL,NULL,'studentManagement','selectItemList','✅studentManagement查询-查询列表','sql','{}','{ \"table\": \"student\", \"operation\": \"select\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (366,NULL,NULL,'studentManagement','insertItem','✅studentManagement查询-添加成员','sql','{}','{ \"table\": \"student\", \"operation\": \"insert\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (367,NULL,NULL,'studentManagement','updateItem','✅studentManagement查询-更新成员','sql','{}','{ \"table\": \"student\", \"operation\": \"jhUpdate\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (368,NULL,NULL,'studentManagement','deleteItem','✅studentManagement查询-删除信息','sql','{}','{ \"table\": \"student\", \"operation\": \"jhDelete\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (369,NULL,NULL,'classManagement','selectItemList','✅classManagement查询-查询列表','sql','{}','{ \"table\": \"class\", \"operation\": \"select\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (370,NULL,NULL,'classManagement','insertItem','✅classManagement查询-添加成员','sql','{}','{ \"table\": \"class\", \"operation\": \"insert\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (371,NULL,NULL,'classManagement','updateItem','✅classManagement查询-更新成员','sql','{}','{ \"table\": \"class\", \"operation\": \"jhUpdate\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (372,NULL,NULL,'classManagement','deleteItem','✅classManagement查询-删除信息','sql','{}','{ \"table\": \"class\", \"operation\": \"jhDelete\" }','','','insert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (373,NULL,NULL,'studentManagementOfOneClass','selectCurrentList','✅班级的学生管理-查询当前学生下的班级列表','sql','{}','{ \"table\": \"view01_student_class\", \"operation\": \"select\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (374,NULL,NULL,'studentManagementOfOneClass','insertItem','✅班级的学生管理-建立关系','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhInsert\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (375,NULL,NULL,'studentManagementOfOneClass','updateItem','✅班级的学生管理-更新数据','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhUpdate\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (376,NULL,NULL,'studentManagementOfOneClass','deleteItem','✅班级的学生管理-删除信息','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhDelete\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (377,NULL,NULL,'studentManagementOfOneClass','selectAllList','✅班级查询-查询列表','sql','{}','{ \"table\": \"student\", \"operation\": \"select\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (378,NULL,NULL,'classManagementOfOneStudent','selectCurrentList','✅学生的班级管理-查询当前班级下的学生列表','sql','{}','{ \"table\": \"view01_student_class\", \"operation\": \"select\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (379,NULL,NULL,'classManagementOfOneStudent','insertItem','✅学生的班级管理-建立关系','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhInsert\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (380,NULL,NULL,'classManagementOfOneStudent','updateItem','✅学生的班级管理-更新数据','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhUpdate\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (381,NULL,NULL,'classManagementOfOneStudent','deleteItem','✅学生的班级管理-删除信息','sql','{}','{ \"table\": \"student_class\", \"operation\": \"jhDelete\" }','','','jhInsert',NULL,NULL,NULL);
+INSERT INTO `_resource` (`id`,`accessControlTable`,`resourceHook`,`pageId`,`actionId`,`desc`,`resourceType`,`appDataSchema`,`resourceData`,`requestDemo`,`responseDemo`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (382,NULL,NULL,'classManagementOfOneStudent','selectAllList','✅学生查询-查询列表','sql','{}','{ \"table\": \"class\", \"operation\": \"select\" }','','','jhInsert',NULL,NULL,NULL);
 
 
 
@@ -266,9 +188,6 @@ CREATE TABLE `_role` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 COMMENT = '角色表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _role
-# ------------------------------------------------------------
 
 INSERT INTO `_role` (`id`,`roleId`,`roleName`,`roleDesc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'administrator','系统管理员','','insert',NULL,NULL,NULL);
 INSERT INTO `_role` (`id`,`roleId`,`roleName`,`roleDesc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (6,'boss','掌门','','insert',NULL,NULL,NULL);
@@ -297,68 +216,7 @@ CREATE TABLE `_ui` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 92 COMMENT = 'ui 施工方案';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _ui
-# ------------------------------------------------------------
 
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (1,'uiAction','ui','refreshTableData','✅获取表格数据','{ \"main\": [{\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'uiAction','ui','startInsertItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearCreateForm\"}, {\"function\": \"openCreateDrawer\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (4,'uiAction','ui','createItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"prepareCreateItem\"}, {\"function\": \"confirmCreateFormDialog\"}], \"main\": [ {\"function\": \"doCreateItem\"}], \"after\": [{\"function\": \"closeCreateDrawer\"}, {\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (5,'uiAction','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"fillUpdateForm\"}, {\"function\": \"openUpdateDrawer\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (6,'uiAction','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeUpdateDrawer\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (7,'uiAction','ui','deleteItem','✅删除数据','{ \"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [ {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (11,'uiActionComponent','ui','refreshTableData','✅获取表格数据','{ \"before\": [{\"vueComponent\": \"classSelectDialog\", \"function\": \"selectItem\", \"functionParamObj\": { \"item\": { \"value\": \"2021-01级-01班\" } }}], \"main\": [{\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (13,'uiActionComponent','ui','startCreateItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (14,'uiActionComponent','ui','insertItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"vueComponent\": \"jhConfirmDialog\", \"function\": \"confirmDialog\", \"functionParamObj\": { \"title\": \"新增\", \"content\": \"确定新增吗？\" }}], \"main\": [{\"function\": \"prepareCreateItem\"}, {\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (15,'uiActionComponent','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (16,'uiActionComponent','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"vueComponent\": \"jhConfirmDialog\", \"function\": \"confirmDialog\", \"functionParamObj\": { \"title\": \"修改\", \"content\": \"确定修改吗？\" }}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (17,'uiActionComponent','ui','deleteItem','✅删除数据','{ \"before\": [{\"vueComponent\": \"jhConfirmDialog\", \"function\": \"confirmDialog\", \"functionParamObj\": { \"title\": \"删除\", \"content\": \"确定删除吗？\" }}], \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (30,'resourceHook','ui','refreshTableData','✅获取表格数据','{ \"main\": [{\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (31,'resourceHook','ui','startCreateItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (32,'resourceHook','ui','createItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmCreateItemDialog\"}], \"main\": [{\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (33,'resourceHook','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (34,'resourceHook','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (35,'resourceHook','ui','deleteItem','✅删除数据','{ \"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (40,'backendSearchDemo','ui','refreshTableData','✅获取表格数据','{ \"main\": [{\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (41,'backendSearchDemo','ui','startCreateItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (42,'backendSearchDemo','ui','createItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmCreateItemDialog\"}], \"main\": [{\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (43,'backendSearchDemo','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (44,'backendSearchDemo','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (45,'backendSearchDemo','ui','deleteItem','✅删除数据','{ \"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (50,'dataAccessRight','ui','refreshTableData','✅获取表格数据','{ \"main\": [{\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (51,'dataAccessRight','ui','startCreateItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (52,'dataAccessRight','ui','createItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmCreateItemDialog\"}], \"main\": [{\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (53,'dataAccessRight','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (54,'dataAccessRight','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (55,'dataAccessRight','ui','deleteItem','✅删除数据','{ \"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (64,'studentManagement','ui','refreshTableData','✅获取表格数据','{\"main\": [{\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (65,'studentManagement','ui','startCreateItem','✅获取表格数据','{\"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateItemDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (66,'studentManagement','ui','createItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmCreateItemDialog\"}], \"main\": [{\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (67,'studentManagement','ui','startUpdateItem','✅获取表格数据','{\"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (68,'studentManagement','ui','updateItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (69,'studentManagement','ui','deleteItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (70,'classManagement','ui','refreshTableData','✅获取表格数据','{\"main\": [{\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (71,'classManagement','ui','startCreateItem','✅获取表格数据','{\"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateItemDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (72,'classManagement','ui','createItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmCreateItemDialog\"}], \"main\": [{\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (73,'classManagement','ui','startUpdateItem','✅获取表格数据','{\"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (74,'classManagement','ui','updateItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (75,'classManagement','ui','deleteItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (76,'classManagement','ui','redirect','✅跳转详情','{\"main\": [{\"function\": \"doRedirect\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (77,'studentManagement','ui','redirect','✅跳转详情','{\"main\": [{\"function\": \"doRedirect\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (78,'studentManagementOfOneClass','ui','refreshTableData','✅获取表格数据','{\"main\": [{\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (79,'studentManagementOfOneClass','ui','getDrawerTableData','✅获取内表格数据','{\"main\": [{\"function\": \"getDrawerTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (80,'studentManagementOfOneClass','ui','allotItem','✅同步数据','{\"before\": [{\"function\": \"confirmAllotItemDialog\"}], \"main\": [{\"function\": \"doAllotItem\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (81,'studentManagementOfOneClass','ui','buildRelation','✅同步数据','{\"before\": [{\"function\": \"confirmAllotItemDialog\"}], \"main\": [{\"function\": \"doBuildRelation\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (82,'studentManagementOfOneClass','ui','startUpdateItem','✅获取表格数据','{\"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (83,'studentManagementOfOneClass','ui','updateItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (84,'studentManagementOfOneClass','ui','deleteRelation','✅删除关系数据','{\"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"doDeleteRelation\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (85,'classManagementOfOneStudent','ui','refreshTableData','✅获取表格数据','{\"main\": [{\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (86,'classManagementOfOneStudent','ui','getDrawerTableData','✅获取内表格数据','{\"main\": [{\"function\": \"getDrawerTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (87,'classManagementOfOneStudent','ui','allotItem','✅同步数据','{\"before\": [{\"function\": \"confirmAllotItemDialog\"}], \"main\": [{\"function\": \"doAllotItem\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (88,'classManagementOfOneStudent','ui','buildRelation','✅同步数据','{\"before\": [{\"function\": \"confirmAllotItemDialog\"}], \"main\": [{\"function\": \"doBuildRelation\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (89,'classManagementOfOneStudent','ui','startUpdateItem','✅获取表格数据','{\"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (90,'classManagementOfOneStudent','ui','updateItem','✅获取表格数据','{\"before\": [{\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}]}',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (91,'classManagementOfOneStudent','ui','deleteRelation','✅删除关系数据','{\"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [{\"function\": \"doDeleteRelation\"}, {\"function\": \"refreshTableData\"}]}',NULL,'insert',NULL,NULL,NULL);
 
 
 
@@ -385,12 +243,9 @@ CREATE TABLE `_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_index` (`username`),
   UNIQUE KEY `userId_index` (`userId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 50 COMMENT = '用户表';
+) ENGINE = InnoDB AUTO_INCREMENT = 49 COMMENT = '用户表';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _user
-# ------------------------------------------------------------
 
 INSERT INTO `_user` (`id`,`idSequence`,`userId`,`username`,`clearTextPassword`,`password`,`md5Salt`,`userStatus`,`userType`,`config`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (42,NULL,'admin','系统管理员','123456','38d61d315e62546fe7f1013e31d42f57','Xs4JSZnhiwsR','active',NULL,NULL,'insert',NULL,NULL,NULL);
 INSERT INTO `_user` (`id`,`idSequence`,`userId`,`username`,`clearTextPassword`,`password`,`md5Salt`,`userStatus`,`userType`,`config`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (43,NULL,'W00001','张三丰','123456','38d61d315e62546fe7f1013e31d42f57','Xs4JSZnhiwsR','active',NULL,NULL,'insert',NULL,NULL,NULL);
@@ -419,12 +274,9 @@ CREATE TABLE `_user_group_role` (
   PRIMARY KEY (`id`),
   KEY `groupId_index` (`groupId`),
   KEY `userId_index` (`userId`)
-) ENGINE = InnoDB AUTO_INCREMENT = 587 COMMENT = '用户群组角色关联表; 软删除未启用;';
+) ENGINE = InnoDB AUTO_INCREMENT = 579 COMMENT = '用户群组角色关联表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _user_group_role
-# ------------------------------------------------------------
 
 INSERT INTO `_user_group_role` (`id`,`userId`,`groupId`,`roleId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (568,'admin','adminGroup','administrator','insert',NULL,NULL,NULL);
 INSERT INTO `_user_group_role` (`id`,`userId`,`groupId`,`roleId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (569,'W00001','wudang','boss','insert',NULL,NULL,NULL);
@@ -457,18 +309,10 @@ CREATE TABLE `_user_group_role_page` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 31 COMMENT = '用户群组角色 - 页面 映射表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _user_group_role_page
-# ------------------------------------------------------------
 
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (17,'*','public','*','login','allow','登陆页; 开放给所有用户;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (18,'*','login','*','manual','allow','操作手册页; 开放给登陆用户;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (19,'*','login','*','help','allow','帮助页; 开放给登陆用户;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (21,'*','adminGroup','administrator','*','allow','所有页面; 开放给应用管理者;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (27,'*','wudang','boss,disciple','protocolDemo','allow','studentManagement01; 开放给武当派派掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (28,'*','gaibang','boss,disciple','frontendDemo01,frontendDemo02','allow','studentManagement02&studentManagement03; 开放给丐帮掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (29,'*','huashan','boss,disciple','backendSearchDemo','allow','studentManagement04; 开放给华山派掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (30,'*','*','boss,disciple','dataAccessRight','allow','数据权限demo','insert',NULL,NULL,NULL);
+INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (1,'*','public','*','login','allow','登陆页面; 开放所有用户;','insert',NULL,NULL,NULL);
+INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (2,'*','login','*','help,manual','allow','工具页; 开放给登陆用户;','insert',NULL,NULL,NULL);
+INSERT INTO `_user_group_role_page` (`id`,`user`,`group`,`role`,`page`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'*','login','*','*','allow','所有页面; 开放给登陆用户;','insert',NULL,NULL,NULL);
 
 
 
@@ -493,26 +337,10 @@ CREATE TABLE `_user_group_role_resource` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 135 COMMENT = '用户群组角色 - 请求资源 映射表; 软删除未启用;';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: _user_group_role_resource
-# ------------------------------------------------------------
 
 INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (1,'*','public','*','login.passwordLogin','allow','登陆resource, 开放给所有用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (11,'*','public','*','allPage.getConstantList','allow','查询常量resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (31,'*','login','*','allPage.logout','allow','登出resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (32,'*','login','*','allPage.refreshToken','allow','刷新authToken resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (33,'*','login','*','allPage.userInfo','allow','用户个人信息resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (34,'*','login','*','allPage.uploadByBase64','allow','上传文件resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (35,'*','login','*','allPage.uploadByStream','allow','上传文件resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (51,'*','adminGroup','administrator','*','allow','应用管理者, 赋予所有resource权限','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (117,'*','wudang','boss','protocolDemo.*','allow','page01 内的所有操作; 开放给武当派掌门;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (118,'*','wudang','disciple','protocolDemo.selectItemList','allow','page01 内的查询列表操作; 开放给武当派门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (125,'*','gaibang','boss','frontendDemo01.*,frontendDemo02.*','allow','page02&page03 内的所有操作; 开放给丐帮掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (126,'*','gaibang','disciple','frontendDemo01.selectItemList,frontendDemo02.selectItemList','allow','page02&page03 内的查询列表操作; 开放给丐帮掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (131,'*','huashan','boss','backendSearchDemo.*','allow','page04 内的所有操作; 开放给华山派掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (132,'*','huashan','disciple','backendSearchDemo.selectItemList','allow','page04 内的查询列表操作; 开放给华山派掌门&门徒;','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (133,'*','*','boss','dataAccessRight.*','allow','page05 内的所有操作; 开放给所有掌门','insert',NULL,NULL,NULL);
-INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (134,'*','*','disciple','dataAccessRight.selectItemList','allow','page05 内的查询列表操作; 开放给所有门徒;','insert',NULL,NULL,NULL);
+INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (2,'*','login','*','allPage.*','allow','工具类resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
+INSERT INTO `_user_group_role_resource` (`id`,`user`,`group`,`role`,`resource`,`allowOrDeny`,`desc`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'*','login','*','*','allow','所有resource, 开放给所有登陆成功的用户','insert',NULL,NULL,NULL);
 
 
 
@@ -539,7 +367,7 @@ CREATE TABLE `_user_session` (
   KEY `userId_index` (`userId`),
   KEY `userId_deviceId_index` (`userId`, `deviceId`) USING BTREE,
   KEY `authToken_index` (`authToken`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 COMMENT = '用户session表; deviceId 维度;软删除未启用;';
+) ENGINE = InnoDB AUTO_INCREMENT = 27 COMMENT = '用户session表; deviceId 维度;软删除未启用;';
 
 
 
@@ -564,9 +392,6 @@ CREATE TABLE `access_control_student` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 52 COMMENT = '学生表的 accessControl 表';
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: access_control_student
-# ------------------------------------------------------------
 
 INSERT INTO `access_control_student` (`id`,`userId`,`username`,`resourceData`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (50,'G00001','洪七公','{ \"where\":{\"level\": \"02\"} }','insert',NULL,NULL,NULL);
 INSERT INTO `access_control_student` (`id`,`userId`,`username`,`resourceData`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (51,'H00001','岳不群','{ \"where\":{\"level\": \"02\"} }','insert',NULL,NULL,NULL);
@@ -593,17 +418,12 @@ CREATE TABLE `class` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 125;
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: class
-# ------------------------------------------------------------
 
-INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (111,'武当01班','wudang','武当',NULL,'正常','jhUpdate','W00001','张三丰','2022-05-02T14:44:42+08:00');
-INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (112,'武当02班','wudang','武当',NULL,'正常','jhUpdate','W00001','张三丰','2022-04-27T19:52:53+08:00');
+INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (111,'武当01班','wudang','武当',NULL,'正常','jhUpdate','admin','系统管理员','2022-09-05T16:57:01+08:00');
 INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (117,'丐帮01班','gaibang','丐帮',NULL,'正常','jhUpdate','W00001','张三丰','2022-04-27T19:52:53+08:00');
 INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (118,'丐帮02班','gaibang','丐帮',NULL,'正常','jhUpdate','W00001','张三丰','2022-04-27T19:52:53+08:00');
 INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (120,'华山03班','huashan','华山',NULL,'正常','jhUpdate','W00001','张三丰','2022-04-27T19:52:53+08:00');
 INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (122,'华山01班','huashan','华山',NULL,'正常','jhUpdate','W00001','张三丰','2022-04-27T19:52:53+08:00');
-INSERT INTO `class` (`id`,`classId`,`menPaiId`,`menPaiName`,`remarks`,`classStatus`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (123,'华山02班','huashan','华山',NULL,'正常','jhUpdate','W00001','张三丰','2022-04-27T19:52:53+08:00');
 
 
 
@@ -629,18 +449,10 @@ CREATE TABLE `student` (
   `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `studentId` (`studentId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 181;
+) ENGINE = InnoDB AUTO_INCREMENT = 176;
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: student
-# ------------------------------------------------------------
 
-INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (161,'G00003','小虾米','male','2022-01-25','2021-01级-02班','02','180','正常','小虾米','jhUpdate','admin','系统管理员','2022-05-01T15:29:52+08:00');
-INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (168,'100067','1111','male','2022-05-02','2021-01级-01班','01',NULL,NULL,NULL,'jhUpdate','admin','系统管理员','2022-05-01T23:38:23+08:00');
-INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (173,'121432','21434',NULL,NULL,'2021-01级-01班',NULL,NULL,NULL,NULL,'jhInsert','admin','系统管理员','2022-05-01T23:37:58+08:00');
-INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (174,'admin','系统管理员','male','2022-05-02','2021-01级-01班','01',NULL,NULL,NULL,'jhUpdate','admin','系统管理员','2022-05-03T21:17:52+08:00');
-INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (175,'1000221','221','male','2022-05-08','2021-01级-02班','01',NULL,NULL,NULL,'jhUpdate','admin','系统管理员','2022-05-03T20:50:51+08:00');
 
 
 
@@ -660,12 +472,9 @@ CREATE TABLE `student_class` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `studentId` (`studentId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 115;
+) ENGINE = InnoDB AUTO_INCREMENT = 158;
 
 
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: student_class
-# ------------------------------------------------------------
 
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (72,'H00001','华山03班','insert',NULL,NULL,NULL,NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (73,'H00002','华山03班','insert',NULL,NULL,NULL,NULL);
@@ -680,20 +489,32 @@ INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationBy
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (82,'H00006','华山01班','insert',NULL,NULL,NULL,NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (83,'H00006','华山02班','insert',NULL,NULL,NULL,NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (86,'111','武当02班','insert',NULL,NULL,NULL,NULL);
-INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (87,'111','丐帮01班','insert',NULL,NULL,NULL,NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (88,'111','丐帮02班','insert',NULL,NULL,NULL,NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (89,'111','华山01班','insert',NULL,NULL,NULL,NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (90,'111','华山02班','insert',NULL,NULL,NULL,NULL);
-INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (93,'W00001','武当01班','insert','W00001','张三丰','2022-02-18T22:12:22+08:00',NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (95,'D00001','华山03班','jhInsert','W00001','张三丰','2022-04-27T21:29:21+08:00',NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (100,'D00001','华山01班','jhInsert','W00001','张三丰','2022-04-29T16:10:13+08:00',NULL);
-INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (103,'H00001','武当01班','jhUpdate','W00001','张三丰','2022-05-07T22:04:33+08:00','123');
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (105,'H00001','undefined','jhInsert','W00001','张三丰','2022-05-07T21:19:22+08:00',NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (109,'D00001','华山02班','jhInsert','W00001','张三丰','2022-05-07T21:40:47+08:00',NULL);
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (110,'D00001','丐帮02班','jhUpdate','W00001','张三丰','2022-05-07T21:53:17+08:00','123');
 INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (111,'D00001','武当02班','jhInsert','W00001','张三丰','2022-05-07T21:54:40+08:00',NULL);
-INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (112,'D00001','丐帮01班','jhInsert','W00001','张三丰','2022-05-07T21:54:41+08:00',NULL);
-INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (113,'D00001','武当01班','jhInsert','W00001','张三丰','2022-05-07T22:05:11+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (120,'admin','武当02班','jhInsert','admin','系统管理员','2022-08-26T21:43:44+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (130,'100067','11150','jhInsert','admin','系统管理员','2022-09-09T02:01:14+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (131,'G00003','11150','jhInsert','admin','系统管理员','2022-09-09T02:01:14+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (132,'121432','11150','jhInsert','admin','系统管理员','2022-09-09T02:01:14+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (135,'121432','华山01班','jhInsert','admin','系统管理员','2022-09-09T02:01:57+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (136,'121432','华山03班','jhInsert','admin','系统管理员','2022-09-09T02:01:57+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (143,'admin','华山01班','jhInsert','admin','系统管理员','2022-09-09T02:06:14+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (144,'admin','华山03班','jhInsert','admin','系统管理员','2022-09-09T02:06:14+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (147,'121432','丐帮01班','jhInsert','admin','系统管理员','2022-09-09T02:14:21+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (149,'G00003','丐帮01班','jhInsert','admin','系统管理员','2022-09-09T02:14:37+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (150,'100067','华山03班','jhInsert','admin','系统管理员','2022-09-09T02:17:28+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (151,'100067','华山01班','jhInsert','admin','系统管理员','2022-09-09T02:17:28+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (152,'100067','丐帮01班','jhInsert','admin','系统管理员','2022-09-09T02:17:40+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (154,'G00003','武当01班','jhInsert','admin','系统管理员','2022-09-09T02:23:08+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (155,'100067','武当01班','jhInsert','admin','系统管理员','2022-09-09T02:23:08+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (156,'121432','武当01班','jhInsert','admin','系统管理员','2022-09-09T02:23:14+08:00',NULL);
+INSERT INTO `student_class` (`id`,`studentId`,`classId`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`,`remark`) VALUES (157,'admin','丐帮01班','jhInsert','admin','系统管理员','2022-09-09T02:23:27+08:00',NULL);
 
 
 
