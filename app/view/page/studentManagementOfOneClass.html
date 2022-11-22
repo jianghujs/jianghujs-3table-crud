@@ -195,12 +195,14 @@ new Vue({
         case 'allotItem':
           await this.confirmAllotItemDialog();
           await this.doAllotItem();
+          await this.clearAllotItemData();
           await this.refreshTableData();
           await this.buildDrawerTableData();
           break;
         case 'buildRelation':
           await this.confirmAllotItemDialog();
           await this.doBuildRelation(uiActionData);
+          await this.clearAllotItemData();
           await this.refreshTableData();
           await this.buildDrawerTableData();
           break;
@@ -226,6 +228,7 @@ new Vue({
           break;
       }
     },
+    
     // 获取所有班级的数据
     /**
      * uiActionId:  refreshTableData
@@ -297,6 +300,9 @@ new Vue({
         await this.buildRelationImpl(studentId);
       }
       window.vtoast.success("批量新增成功");
+    },
+
+    async clearAllotItemData() {
       this.drawerItemSelectedClass = [];
     },
 
