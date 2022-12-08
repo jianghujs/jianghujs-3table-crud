@@ -297,6 +297,9 @@ new Vue({
         await this.buildRelationImpl(classId);
       }
       window.vtoast.success("批量新增成功");
+    },
+
+    async clearAllotItemData() {
       this.drawerItemSelectedClass = [];
     },
 
