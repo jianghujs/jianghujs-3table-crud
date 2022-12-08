@@ -62,8 +62,8 @@
       <v-data-table show-select checkbox-color="success" :headers="drawerHeaders"
                     :loading="isDrawerTableLoading" :items="drawerTableData" item-key="classId"
                     :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }" :items-per-page="20"
-                    mobile-breakpoint="0" @item-selected="drawerItemSelected"
-                    @toggle-select-all="drawerToggleSelectAll"
+                    mobile-breakpoint="0" 
+                    v-model="drawerItemSelectedClass"
                     class="elevation-0 flex-fill d-flex flex-column show-select pt-6"
                     :class="{'px-2': isMobile, 'px-8': !isMobile}">
         <template v-slot:item.action="{ item }">
@@ -291,16 +291,12 @@ new Vue({
     },
 
     async doAllotItem() {
-      this.isAllotEditDrawerShow = false;
       for (let i = 0; i < this.drawerItemSelectedClass.length; i++) {
         window.vtoast.loading(`正在新增 第${i + 1}个`);
         const {classId} = this.drawerItemSelectedClass[i];
         await this.buildRelationImpl(classId);
       }
       window.vtoast.success("批量新增成功");
-    },
-
-    async clearAllotItemData() {
       this.drawerItemSelectedClass = [];
     },
 
@@ -398,22 +394,6 @@ new Vue({
         }
       });
       window.vtoast.success("删除成功");
-    },
-    drawerItemSelected({item, value}) {
-      console.log(item, value);
-      if (value) {
-        this.drawerItemSelectedClass.push(item);
-      } else {
-        this.drawerItemSelectedClass = _.filter(this.drawerItemSelectedClass, ['classId', item.classId]);
-      }
-    },
-    drawerToggleSelectAll({items, value}) {
-      console.log(items, value);
-      if (value) {
-        this.drawerItemSelectedClass = items;
-      } else {
-        this.drawerItemSelectedClass = [];
-      }
     },
     dayjs: dayjs,
   }
