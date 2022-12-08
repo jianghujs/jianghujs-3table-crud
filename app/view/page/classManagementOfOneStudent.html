@@ -60,8 +60,8 @@
         <v-data-table fixed-header show-select checkbox-color="success" :headers="headers"
           :loading="isDrawerTableLoading" :items="drawerTableData" item-key="classId" :dense="isMobile"
           :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }" :items-per-page="20"
-          mobile-breakpoint="0"
-          v-model="drawerItemSelectedClass"
+          mobile-breakpoint="0" @item-selected="drawerItemSelected"
+          @toggle-select-all="drawerToggleSelectAll"
           class="elevation-0 pt-0 mb-xs-4 flex-fill d-flex flex-column show-select">
           <template v-slot:item.action="{ item }">
             <v-btn :small="!isMobile" :xSmall="isMobile" dark class="success"
@@ -304,13 +304,13 @@
       },
 
       async doAllotItem() {
+        this.isAllotEditDrawerShow = false;
         for (let i = 0; i < this.drawerItemSelectedClass.length; i++) {
           window.vtoast.loading(`正在新增 第${i + 1}个`);
           const { classId } = this.drawerItemSelectedClass[i];
           await this.buildRelationImpl(classId);
         }
         window.vtoast.success("批量新增成功");
-        this.isAllotEditDrawerShow = false;
       },
 
       async clearAllotItemData() {
@@ -404,6 +404,22 @@
           }
         });
         window.vtoast.success("删除成功");
+      },
+      drawerItemSelected({ item, value }) {
+          console.log(item, value);
+          if (value) {
+              this.drawerItemSelectedClass.push(item);
+          } else {
+              this.drawerItemSelectedClass = _.reject(this.drawerItemSelectedClass, ['classId', item.classId]);
+          }
+      },
+      drawerToggleSelectAll({ items, value }) {
+          console.log(items, value);
+          if (value) {
+              this.drawerItemSelectedClass = items;
+          } else {
+              this.drawerItemSelectedClass = [];
+          }
       },
       dayjs: dayjs,
     }
